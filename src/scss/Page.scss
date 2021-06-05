@@ -1,0 +1,110 @@
+%table-style {
+    // extend
+    padding: 5px 15px;
+}
+@mixin table-warp() {
+    // mixin
+    padding: 3px 5px;
+}
+@mixin block-size($width, $height, $radius:0) {
+    width: $width;
+    height: $height;
+    @if $radius != 0 {
+        border-radius: $radius;
+    }
+}
+.container {
+    width: 100%;
+    // border: 1px solid #000;
+    .header {
+        display: flex;
+        justify-content: center;
+        .item {
+            padding: 5px 10px;
+            &:hover {
+                color: #fff;
+                background-color: #42b983;
+            }
+        }
+    }
+    main {
+        margin-top: 25px;
+        table {
+            margin: auto;
+            border: 1px solid #333;
+            thead {
+                font-weight: 700;
+                border: solid 1px #aaa;
+                // background-color: #42b983;
+            }
+            th {
+                border: 1px solid #aaa;
+                @extend %table-style
+            }
+            td {
+                border: 1px solid #aaa;
+                @include table-warp()
+            }
+        }
+        .mixin {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 25px;
+            .left {
+                background-color: aqua;
+                @include block-size(250px, 300px, 5px);
+
+                // 垂直至中-絕對定位
+                position: relative;
+                .vertical_absolute {
+                    width: 50px;
+                    height: 50px;
+                    background-color: coral;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                    margin: auto;
+                }
+            }
+            .center {
+                background-color: aquamarine;
+                @include block-size(300px, 300px, 20px);
+
+                // 垂直至中- transform
+                position: relative;
+                .vertical_transform {
+                    width: 50px;
+                    height: 50px;
+                    background-color: coral;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%)
+                }
+            }
+            .right {
+                background-color: cadetblue;
+                @include block-size(300px, 250px, 0);
+                
+                // 垂直至中- 偽元素
+                &::before {
+                    width: 0;
+                    height: 100%;
+                    content: '';
+                    display: inline-block;
+                    vertical-align: middle;
+                }
+                .vertical_before {
+                    width: 50px;
+                    height: 50px;
+                    background-color: coral;
+                    display: inline-block;
+                    vertical-align: middle;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,70 @@
+$color-primary :#464646;
+.TodoList {
+    margin: auto;
+    width: 24em;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 1px 5px 15px $color-primary;
+    border-radius: 5px;
+    color: $color-primary;
+}
+h2 {
+    padding: 25px 0 20px 0;
+}
+.input-block {
+    padding: 0 25px 0 25px;
+}
+.label-input {
+    background: transparent;
+	border: 0;
+	border-bottom: 2px solid $color-primary;
+	color: $color-primary;
+	display: inline-block;
+	outline: none; // input hover外框
+	padding: .5em;
+    margin-right: 1em;
+	text-align: left;
+	width: calc(100% - 6em);
+    font-size: 1em;
+}
+.btn-add {
+    border: 2px solid $color-primary;
+	cursor: pointer;
+	display: inline-block;
+	// float: right;
+	padding: .45em;
+	width: 4em;
+}
+.list {
+    padding: 25px;
+    text-align: left;
+    font-size: 1.05em;
+    input {
+        margin: 2px 15px 2px 0;
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    span {
+        display: inline-block;
+        line-height: 20px;
+        height: 20px;
+        vertical-align: middle;
+    }
+    .item-text {
+        padding: 5px 0;
+        &.is-checked {
+            span {
+                text-decoration: line-through
+            }
+        }
+    }
+    .btn-del {
+        border: 1px solid $color-primary;
+        cursor: pointer;
+        float: right;
+        margin-left: 5px;
+        padding: 2px;
+        width: 4em;
+    }
+}
